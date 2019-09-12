@@ -45,8 +45,8 @@ public class RxJavaSimpleActivity extends AppCompatActivity {
             v.setEnabled(false); // disables the button until execution has finished
 
             Disposable subscribe = serverDownloadObservable
-                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(integer -> {updateTheUserInterface(integer);
                     v.setEnabled(true);});
 

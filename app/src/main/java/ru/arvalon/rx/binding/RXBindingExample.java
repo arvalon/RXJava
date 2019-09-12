@@ -2,6 +2,7 @@ package ru.arvalon.rx.binding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,6 +16,10 @@ import ru.arvalon.rx.R;
 
 public class RXBindingExample extends AppCompatActivity {
 
+    private static final String MESSAGE = "Avoid multiple clicks using throttleFirst";
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +29,6 @@ public class RXBindingExample extends AppCompatActivity {
 
         RxView.clicks(button).throttleFirst(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(o -> Toast.makeText(
-                        this,
-                        "Avoid multiple clicks using throttleFirst",
-                        Toast.LENGTH_SHORT).show());
+                .subscribe(o -> Toast.makeText(this, MESSAGE, Toast.LENGTH_SHORT).show());
     }
 }

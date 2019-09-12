@@ -25,14 +25,9 @@ public class ColorsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         configureLayout();
         createObservable();
-    }
-
-    private void createObservable() {
-        Observable<List<String>> listObservable = Observable.just(getColorList());
-        disposable = listObservable.subscribe(colors -> simpleStringAdapter.setStrings(colors));
-
     }
 
     private void configureLayout() {
@@ -41,6 +36,12 @@ public class ColorsActivity extends AppCompatActivity {
         colorListView.setLayoutManager(new LinearLayoutManager(this));
         simpleStringAdapter = new SimpleStringAdapter(this);
         colorListView.setAdapter(simpleStringAdapter);
+    }
+
+    private void createObservable() {
+        Observable<List<String>> listObservable = Observable.just(getColorList());
+        disposable = listObservable.subscribe(colors -> simpleStringAdapter.setStrings(colors));
+
     }
 
     private static List<String> getColorList() {
