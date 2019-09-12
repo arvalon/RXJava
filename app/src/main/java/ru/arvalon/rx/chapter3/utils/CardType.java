@@ -19,23 +19,23 @@ public enum CardType {
     }
 
     public static CardType fromNumber(String number) {
-        if (regVisa
-                .matcher(number).matches()) {
+
+        if (regVisa.matcher(number).matches()) {
             return VISA;
-        } else if (regMasterCard
-                .matcher(number).matches()) {
+
+        } else if (regMasterCard.matcher(number).matches()) {
             return MASTER_CARD;
-        } else if (regAmericanExpress
-                .matcher(number).matches()) {
+
+        } else if (regAmericanExpress.matcher(number).matches()) {
             return AMERICA_EXPRESS;
         }
+
         return UNKNOWN;
     }
 
-    private static Pattern regVisa =
-            Pattern.compile("^4[0-9]{12}(?:[0-9]{3})?$");
-    private static Pattern regMasterCard =
-            Pattern.compile("^5[1-5][0-9]{14}$");
-    private static Pattern regAmericanExpress =
-            Pattern.compile("^3[47][0-9]{13}$");
+    private static Pattern regVisa = Pattern.compile("^4[0-9]{12}(?:[0-9]{3})?$");
+
+    private static Pattern regMasterCard = Pattern.compile("^5[1-5][0-9]{14}$");
+
+    private static Pattern regAmericanExpress = Pattern.compile("^3[47][0-9]{13}$");
 }

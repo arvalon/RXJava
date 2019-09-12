@@ -26,9 +26,8 @@ public class Chapter2Activity extends AppCompatActivity {
 
         List<String> feedUrls = Arrays.asList(
                 "https://news.google.com/?output=atom",
-                "http://www.theregister.co.uk/software/headlines.atom",
-                "http://www.linux.com/news/soware?format=feed&type=atom" // xml parsing error
-        );
+                "http://www.theregister.co.uk/software/headlines.atom");
+                //"http://www.linux.com/news/soware?format=feed&type=atom" // xml parsing error
 
         List<Observable<List<Entry>>> observableList = new ArrayList<>();
 

@@ -55,7 +55,7 @@ public class ReactiveSensorActivity extends AppCompatActivity implements View.On
                                 .subscribe(d -> {
 
                                     String data = String.format(Locale.getDefault(),
-                                            "x: %f, y: %f, z: %f", d[0], d[1], d[2]);
+                                            "x =  %f, y: %f, z: %f", d[0], d[1], d[2]);
 
                                     Log.d(MainActivity.TAG, data);
 
