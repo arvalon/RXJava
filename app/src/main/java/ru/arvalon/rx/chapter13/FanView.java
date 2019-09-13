@@ -15,7 +15,7 @@ import java.util.List;
 
 import ru.arvalon.rx.R;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class FanView extends FrameLayout {
 
@@ -41,18 +41,18 @@ public class FanView extends FrameLayout {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        Log.d(TAG, "onLayout(" + changed + ", " + left + ", "  + top + ", " + right + ", " + bottom + ")");
+        Log.d(LOGTAG, "onLayout(" + changed + ", " + left + ", "  + top + ", " + right + ", " + bottom + ")");
         super.onLayout(changed, left, top, right, bottom);
-        Log.d(TAG, "End onLayout");
+        Log.d(LOGTAG, "End onLayout");
     }
 
     @Override
     protected boolean getChildStaticTransformation(View child, Transformation t) {
-        Log.d(TAG, "getChildStaticTransformation(" + child + ", " + t + ")");
+        Log.d(LOGTAG, "getChildStaticTransformation(" + child + ", " + t + ")");
         final float index = getChildCount() - indexOfChild(child) - 1;
         final float height = child.getHeight();
 
-        Log.d(TAG, "params: " + index + ", " + height);
+        Log.d(LOGTAG, "params: " + index + ", " + height);
 
         Matrix matrix = t.getMatrix();
         matrix.setRotate(index * 20 * openRatio, height/2, height/2);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class MapTileUtils {
 
@@ -17,7 +17,7 @@ public class MapTileUtils {
                                                               final Integer zoomLevel,
                                                               final PointD viewSize,
                                                               final PointD offset) {
-        Log.d(TAG, "calculateMapTiles(" + tileSizePx + ", " + zoomLevel + ", " + viewSize + ", " + offset + ")");
+        Log.d(LOGTAG, "calculateMapTiles(" + tileSizePx + ", " + zoomLevel + ", " + viewSize + ", " + offset + ")");
 
         final int firstTileX = (int) Math.floor(-offset.x / tileSizePx);
         final int firstTileY = (int) Math.floor(-offset.y / tileSizePx);
@@ -56,7 +56,7 @@ public class MapTileUtils {
         final double centerOffsetY = (viewSize.y - mapPxSize) / 2.0;
         final double offsetX = centerOffsetX - offsetX2;
         final double offsetY = centerOffsetY - offsetY2;
-        Log.d(TAG, "offsetPx(" + offsetX + ", " + offsetY + ")");
+        Log.d(LOGTAG, "offsetPx(" + offsetX + ", " + offsetY + ")");
         return new PointD(offsetX, offsetY);
     }
 }

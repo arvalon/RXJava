@@ -4,7 +4,7 @@ import android.util.Log;
 
 import io.reactivex.Observable;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class ValidationUtils {
 
@@ -14,7 +14,7 @@ public class ValidationUtils {
     }
 
     public static boolean checkCardChecksum(String number) {
-        Log.d(TAG, "checkCardChecksum(" + number + ")");
+        Log.d(LOGTAG, "checkCardChecksum(" + number + ")");
         final int[] digits = new int[number.length()];
         for (int i = 0; i < number.length(); i++) {
             digits[i] = Integer.valueOf(number.substring(i, i + 1));

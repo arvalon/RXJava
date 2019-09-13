@@ -29,7 +29,7 @@ import io.reactivex.subjects.PublishSubject;
 import ru.arvalon.rx.R;
 import ru.arvalon.rx.adapter.FileListAdapter;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class Chapter5Activity extends AppCompatActivity {
 
@@ -82,18 +82,18 @@ public class Chapter5Activity extends AppCompatActivity {
 
         Disposable showFilesSubscription = selectedDir
                 .subscribeOn(Schedulers.io())
-                .doOnNext(file -> Log.d(TAG, "Selected file: " + file))
+                .doOnNext(file -> Log.d(LOGTAG, "Selected file: " + file))
                 .switchMap(file -> createFilesObservable(file).subscribeOn(Schedulers.io()))
-                .doOnNext(list -> Log.d(TAG, "Found " + list.size() + " files, processing " + list.size() + " files"))
+                .doOnNext(list -> Log.d(LOGTAG, "Found " + list.size() + " files, processing " + list.size() + " files"))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         files -> {
-                            Log.d(TAG, "Updating adapter with " + files.size() + " items");
+                            Log.d(LOGTAG, "Updating adapter with " + files.size() + " items");
                             adapter.clear();
                             adapter.addAll(files);
                         },
-                        e -> Log.e(TAG, "Error readings files", e),
-                        () -> Log.d(TAG, "Completed"));
+                        e -> Log.e(LOGTAG, "Error readings files", e),
+                        () -> Log.d(LOGTAG, "Completed"));
 
         subscriptions.add(selectedDirSubscription);
         subscriptions.add(showFilesSubscription);
@@ -135,7 +135,7 @@ public class Chapter5Activity extends AppCompatActivity {
                         (parent, view, position, id) -> {
 
                             final File file = (File) view.getTag();
-                            Log.d(TAG, "Selected: " + file);
+                            Log.d(LOGTAG, "Selected: " + file);
 
                             if (file.isDirectory()) {
                                 emitter.onNext(file);

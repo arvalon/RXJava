@@ -18,7 +18,7 @@ import ru.arvalon.rx.chapter9.pojo.GameGrid;
 import ru.arvalon.rx.chapter9.pojo.GameSymbol;
 import ru.arvalon.rx.chapter9.pojo.GridPosition;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class GameGridView extends View {
 
@@ -72,7 +72,7 @@ public class GameGridView extends View {
 
         canvas.drawColor(Color.WHITE);
 
-        Log.d(TAG, "width: " + width + ", height: " + height);
+        Log.d(LOGTAG, "width: " + width + ", height: " + height);
 
         final float gridWidth = getGridWidth();
         final float gridHeight = getGridHeight();
@@ -122,7 +122,7 @@ public class GameGridView extends View {
                                float gridWidth, float gridHeight,
                                float tileWidth, float tileHeight) {
         for (int i = 0; i <= gridWidth; i++) {
-            Log.d(TAG, "line " + i);
+            Log.d(LOGTAG, "line " + i);
             canvas.drawLine(i * tileWidth, 0, i * tileWidth, height, linePaint);
         }
 

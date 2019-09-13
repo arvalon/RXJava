@@ -52,6 +52,13 @@
             android:text="Reactive sensor" />
 
         <Button
+            android:id="@+id/editor.action.btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Editor Action" />
+
+        <Button
             android:id="@+id/ch1.rxtextview.btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

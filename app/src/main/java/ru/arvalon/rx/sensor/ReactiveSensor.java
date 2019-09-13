@@ -12,7 +12,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.disposables.Disposable;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class ReactiveSensor implements ObservableOnSubscribe<float[]>, Disposable, SensorEventListener
 {
@@ -28,7 +28,7 @@ public class ReactiveSensor implements ObservableOnSubscribe<float[]>, Disposabl
 
     @Override
     public void subscribe(ObservableEmitter<float[]> emitter) throws Exception {
-        Log.d(TAG, "subscribe");
+        Log.d(LOGTAG, "subscribe");
 
         this.emitter = emitter;
         this.emitter.setDisposable(this);
@@ -44,7 +44,7 @@ public class ReactiveSensor implements ObservableOnSubscribe<float[]>, Disposabl
         SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         manager.unregisterListener(this);
         isDisposed = true;
-        Log.d(TAG, "dispose");
+        Log.d(LOGTAG, "dispose");
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ReactiveSensor implements ObservableOnSubscribe<float[]>, Disposabl
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        Log.d(TAG, "onSensorChanged");
+        Log.d(LOGTAG, "onSensorChanged");
         emitter.onNext(sensorEvent.values);
     }
 

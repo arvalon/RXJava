@@ -31,7 +31,7 @@ import ru.arvalon.rx.chapter4.network.FlickrPhotosGetSizesResponse;
 import ru.arvalon.rx.chapter4.network.FlickrSearchResponse;
 import ru.arvalon.rx.chapter4.pojo.Photo;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class Chapter4Activity extends FragmentActivity {
 
@@ -63,18 +63,18 @@ public class Chapter4Activity extends FragmentActivity {
                 .subscribe(searchButton::setEnabled);
 
         buttonClickObservable
-                .doOnNext(e -> Log.d(TAG, "Search button clicked"))
+                .doOnNext(e -> Log.d(LOGTAG, "Search button clicked"))
                 .withLatestFrom(searchTextInput, (e, searchText) -> searchText)
-                .doOnNext(searchText -> Log.d(TAG, "Start search with '" + searchText + "'"))
+                .doOnNext(searchText -> Log.d(LOGTAG, "Start search with '" + searchText + "'"))
                 .flatMap(searchText ->
                         api.searchPhotos(apiKey, searchText, 4)
                                 .subscribeOn(Schedulers.io()))
                 .map(FlickrSearchResponse::getPhotos)
-                .doOnNext(photos -> Log.d(TAG, "Found " + photos.size() + " photos to process"))
+                .doOnNext(photos -> Log.d(LOGTAG, "Found " + photos.size() + " photos to process"))
                 .flatMap((Function<List<FlickrSearchResponse.Photo>, Observable<List<Photo>>>) photos -> {
                     if (photos.size() > 0) {
                         return Observable.fromIterable(photos)
-                                .doOnNext(photo -> Log.d(TAG, "Processing photo  " + photo.getId()))
+                                .doOnNext(photo -> Log.d(LOGTAG, "Processing photo  " + photo.getId()))
                                 .concatMap(photo ->
                                         Observable.combineLatest(
                                                 api.photoInfo(apiKey, photo.getId())
@@ -84,9 +84,9 @@ public class Chapter4Activity extends FragmentActivity {
                                                         .subscribeOn(Schedulers.io())
                                                         .map(FlickrPhotosGetSizesResponse::getSizes),
                                                 Photo::createPhoto))
-                                .doOnNext(photo -> Log.d(TAG, "Finished processing photo " + photo.getId()))
+                                .doOnNext(photo -> Log.d(LOGTAG, "Finished processing photo " + photo.getId()))
                                 .toList()
-                                .doOnSuccess(photo -> Log.d(TAG, "Finished processing all photos"))
+                                .doOnSuccess(photo -> Log.d(LOGTAG, "Finished processing all photos"))
                                 .toObservable();
 
                     } else {
@@ -99,10 +99,10 @@ public class Chapter4Activity extends FragmentActivity {
                             final RecyclerView rv = findViewById(R.id.main_list);
                             rv.setLayoutManager(new LinearLayoutManager(this));
 
-                            Log.d(TAG, "Found " + photos.size() + " photos");
+                            Log.d(LOGTAG, "Found " + photos.size() + " photos");
                             final PhotoAdapter photoAdapter = new PhotoAdapter(this, photos);
                             rv.setAdapter(photoAdapter);
                         },
-                        e -> Log.e(TAG, "Error getting photos", e));
+                        e -> Log.e(LOGTAG, "Error getting photos", e));
     }
 }

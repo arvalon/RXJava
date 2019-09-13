@@ -23,7 +23,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.BehaviorSubject;
 import ru.arvalon.rx.R;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class Chapter14Activity extends AppCompatActivity {
 
@@ -74,7 +74,7 @@ public class Chapter14Activity extends AppCompatActivity {
         touchDelta.getObservable()
                 .withLatestFrom(mapState,
                         (pixelDelta, mapStateValue) -> {
-                            Log.v(TAG, "pixelDelta(" + pixelDelta + ")");
+                            Log.v(LOGTAG, "pixelDelta(" + pixelDelta + ")");
                             final double cx = mapStateValue.first.x / 2.0 - mapStateValue.second.x;
                             final double cy = mapStateValue.first.y / 2.0 - mapStateValue.second.y;
                             final PointD newPoint = new PointD(cx - pixelDelta.x, cy - pixelDelta.y);

@@ -39,7 +39,7 @@ public class Chapter3Activity extends AppCompatActivity {
         resolveViews();
 
         submitButton.setOnClickListener((view) -> {
-            Log.d(MainActivity.TAG, "Submit");
+            Log.d(MainActivity.LOGTAG, "Submit");
             findViewById(R.id.container).requestFocus();
         });
 

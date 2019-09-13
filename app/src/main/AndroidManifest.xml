@@ -5,13 +5,13 @@
     package="ru.arvalon.rx"
     tools:ignore="GoogleAppIndexingWarning">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name="ru.arvalon.rx.chapter9.GameApplication"
+        android:name=".chapter9.GameApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,31 +20,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="ru.arvalon.rx.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ru.arvalon.rx.simple.RxJavaSimpleActivity"/>
-        <activity android:name="ru.arvalon.rx.chapter2.Chapter2Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter1.RxTextViewActivity"/>
-        <activity android:name="ru.arvalon.rx.sensor.ReactiveSensorActivity"/>
-        <activity android:name="ru.arvalon.rx.binding.RXBindingExample"/>
+
+        <activity android:name=".simple.RxJavaSimpleActivity"/>
+        <activity android:name=".color.ColorsActivity"/>
+        <activity android:name=".books.BooksActivity"/>
         <activity android:name=".schediler.SchedulerActivity"/>
-        <activity android:name="ru.arvalon.rx.books.BooksActivity"/>
-        <activity android:name="ru.arvalon.rx.color.ColorsActivity"/>
-        <activity android:name="ru.arvalon.rx.chapter3.Chapter3Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter4.Chapter4Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter4.Chapter4aActivity"/>
-        <activity android:name="ru.arvalon.rx.chapter5.Chapter5Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter6.Chapter6Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter7.Chapter7Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter8.Chapter8Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter9.Chapter9Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter13.Chapter13Activity"/>
-        <activity android:name="ru.arvalon.rx.chapter14.Chapter14Activity"/>
+        <activity android:name=".binding.RXBindingExample"/>
+        <activity android:name=".sensor.ReactiveSensorActivity"/>
+        <activity android:name=".editoraction.EditorActionActivity"/>
+        <activity android:name=".chapter1.RxTextViewActivity"/>
+        <activity android:name=".chapter2.Chapter2Activity" />
+        <activity android:name=".chapter3.Chapter3Activity" />
+        <activity android:name=".chapter4.Chapter4Activity" />
+        <activity android:name=".chapter4.Chapter4aActivity" />
+        <activity android:name=".chapter5.Chapter5Activity" />
+        <activity android:name=".chapter6.Chapter6Activity" />
+        <activity android:name=".chapter7.Chapter7Activity" />
+        <activity android:name=".chapter8.Chapter8Activity" />
+        <activity android:name=".chapter9.Chapter9Activity" />
+        <activity android:name=".chapter13.Chapter13Activity" />
+        <activity android:name=".chapter14.Chapter14Activity" />
     </application>
 
 </manifest>

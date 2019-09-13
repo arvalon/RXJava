@@ -15,7 +15,7 @@ import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.Subject;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class TileBitmapLoader {
 
@@ -55,7 +55,7 @@ public class TileBitmapLoader {
     }
 
     private Observable<TileBitmap> loadTileBitmap(final Tile mapTile) {
-        Log.d(TAG, "Loading bitmap for tile " + mapTile.toString());
+        Log.d(LOGTAG, "Loading bitmap for tile " + mapTile.toString());
         try {
             return MapTileNetworkUtils.loadMapTile(mapNetworkAdapter).apply(mapTile);
         } catch (Exception e) {

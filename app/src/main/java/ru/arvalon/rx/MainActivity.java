@@ -22,13 +22,14 @@ import ru.arvalon.rx.chapter6.Chapter6Activity;
 import ru.arvalon.rx.chapter7.Chapter7Activity;
 import ru.arvalon.rx.chapter8.Chapter8Activity;
 import ru.arvalon.rx.color.ColorsActivity;
+import ru.arvalon.rx.editoraction.EditorActionActivity;
 import ru.arvalon.rx.sensor.ReactiveSensorActivity;
 import ru.arvalon.rx.simple.RxJavaSimpleActivity;
 import ru.arvalon.rx.schediler.SchedulerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "rx4.logs";
+    public static final String LOGTAG = "rx4.logs";
 
     Disposable disposable;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG,"onCreate");
+        Log.d(LOGTAG,"onCreate");
 
         /*final Observable<Integer> serverDownloadObservable = Observable.create(emitter -> {
             SystemClock.sleep(3000);
@@ -74,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.reactive_sensor_btn:
                 i = new Intent(this,ReactiveSensorActivity.class);
+                break;
+
+            case R.id.editor_action_btn:
+                i = new Intent(this, EditorActionActivity.class);
                 break;
 
             case R.id.ch1_rxtextview_btn:

@@ -7,7 +7,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class FeedObservable {
 
@@ -21,10 +21,10 @@ public class FeedObservable {
                     FeedParser parser = new FeedParser();
                     try {
                         List<Entry> entries = parser.parse(response.body().byteStream());
-                        Log.v(TAG, "Number of entries from url " + url + ": " + entries.size());
+                        Log.v(LOGTAG, "Number of entries from url " + url + ": " + entries.size());
                         return entries;
                     } catch (Exception e) {
-                        Log.e(TAG, "Error parsing feed", e);
+                        Log.e(LOGTAG, "Error parsing feed", e);
                     }
                     return new ArrayList<>();
                 });

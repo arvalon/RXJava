@@ -57,7 +57,7 @@ public class ReactiveSensorActivity extends AppCompatActivity implements View.On
                                     String data = String.format(Locale.getDefault(),
                                             "x =  %f, y: %f, z: %f", d[0], d[1], d[2]);
 
-                                    Log.d(MainActivity.TAG, data);
+                                    Log.d(MainActivity.LOGTAG, data);
 
                                     tvDisplay.setText(data);
                                 })

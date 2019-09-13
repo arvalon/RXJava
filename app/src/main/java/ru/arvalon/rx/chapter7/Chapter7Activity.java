@@ -25,7 +25,7 @@ import io.reactivex.subjects.PublishSubject;
 import ru.arvalon.rx.R;
 import ru.arvalon.rx.adapter.FileListAdapter;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class Chapter7Activity extends AppCompatActivity {
 
@@ -144,7 +144,7 @@ public class Chapter7Activity extends AppCompatActivity {
 
     private void setFileList(List<File> files) {
 
-        Log.d(TAG, "Updating adapter with " + files.size() + " items");
+        Log.d(LOGTAG, "Updating adapter with " + files.size() + " items");
         adapter.clear();
         adapter.addAll(files);
     }
@@ -185,7 +185,7 @@ public class Chapter7Activity extends AppCompatActivity {
                 listView.setOnItemClickListener(
                         (parent, view, position, id) -> {
                             final File file = (File) view.getTag();
-                            Log.d(TAG, "Selected: " + file);
+                            Log.d(LOGTAG, "Selected: " + file);
                             if (file.isDirectory()) {
                                 emitter.onNext(file);
                             }

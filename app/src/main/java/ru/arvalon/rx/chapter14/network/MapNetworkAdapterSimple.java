@@ -5,7 +5,7 @@ import android.util.Log;
 
 import io.reactivex.Observable;
 
-import static ru.arvalon.rx.MainActivity.TAG;
+import static ru.arvalon.rx.MainActivity.LOGTAG;
 
 public class MapNetworkAdapterSimple implements MapNetworkAdapter {
 
@@ -20,7 +20,7 @@ public class MapNetworkAdapterSimple implements MapNetworkAdapter {
     }
 
     public Observable<Bitmap> getMapTile(final int zoom, final int x, final int y) {
-        Log.d(TAG, "getMapTile(" + zoom + ", " + x + ", " + y + ")");
+        Log.d(LOGTAG, "getMapTile(" + zoom + ", " + x + ", " + y + ")");
         final String url = String.format(urlFormat, zoom, x, y);
         return networkClient
                 .loadBitmap(url);
